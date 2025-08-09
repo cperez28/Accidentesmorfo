@@ -1,0 +1,2351 @@
+<!DOCTYPE html>
+<html lang="es" class="theme-aurora">
+<head>
+<meta charset="UTF-8" />
+<title>Anatomia Dental</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
+<style>
+/* =================== PALETA BASE =================== */
+:root {
+  --color-bg:#0f172a;
+  --color-surface:#1e293b;
+  --color-surface-alt:#243554;
+  --color-brand:#38bdf8;
+  --color-brand-accent:#818cf8;
+  --color-correct:#10b981;
+  --color-wrong:#f43f5e;
+  --color-text:#f1f5f9;
+  --color-text-dim:#94a3b8;
+  --color-border:#334155;
+  --color-progress-track:#334155;
+  --color-progress-bar:linear-gradient(90deg,#38bdf8,#818cf8);
+  --radius-s:.45rem;
+  --radius-m:1.1rem;
+  --shadow:0 8px 24px -10px rgba(0,0,0,.55),0 2px 6px -2px rgba(0,0,0,.4);
+  --transition:.25s cubic-bezier(.4,0,.2,1);
+  --focus-ring:0 0 0 3px rgba(56,189,248,.35);
+  --font-stack:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;
+}
+/* =================== TEMAS =================== */
+:root.theme-solar, body.theme-solar {
+  --color-bg:#FFF8ED; --color-surface:#FFFFFF; --color-surface-alt:#FFF1D6;
+  --color-brand:#FF8A3D; --color-brand-accent:#FDB022;
+  --color-correct:#12B76A; --color-wrong:#E54848;
+  --color-text:#332E29; --color-text-dim:#7A6F63; --color-border:#F2DEC3;
+  --color-progress-track:#F3E3CB;
+  --color-progress-bar:linear-gradient(90deg,#FF8A3D,#FDB022);
+  --shadow:0 6px 22px -8px rgba(255,138,61,.45),0 2px 6px -2px rgba(0,0,0,.15);
+  --focus-ring:0 0 0 3px rgba(255,138,61,.35);
+}
+:root.theme-forest, body.theme-forest {
+  --color-bg:#0b1d16; --color-surface:#123226; --color-surface-alt:#184532;
+  --color-brand:#34d399; --color-brand-accent:#10b981;
+  --color-correct:#22c55e; --color-wrong:#ef4444;
+  --color-text:#ecfdf5; --color-text-dim:#6ee7b7; --color-border:#1d4733;
+  --color-progress-track:#1d4733;
+  --color-progress-bar:linear-gradient(90deg,#34d399,#10b981);
+  --shadow:0 10px 28px -14px rgba(0,0,0,.65),0 2px 6px -2px rgba(0,0,0,.45);
+  --focus-ring:0 0 0 3px rgba(52,211,153,.35);
+}
+:root.theme-lab, body.theme-lab {
+  --color-bg:#0d1117; --color-surface:#161b22; --color-surface-alt:#1f242c;
+  --color-brand:#2ea8ff; --color-brand-accent:#b16cee;
+  --color-correct:#1fbf75; --color-wrong:#ff506d;
+  --color-text:#dbe2ee; --color-text-dim:#8b9db4; --color-border:#28313d;
+  --color-progress-track:#28313d;
+  --color-progress-bar:linear-gradient(90deg,#2ea8ff,#b16cee);
+  --shadow:0 8px 26px -12px rgba(0,0,0,.55),0 2px 6px -2px rgba(0,0,0,.4);
+  --focus-ring:0 0 0 3px rgba(46,168,255,.35);
+}
+:root.theme-candy, body.theme-candy {
+  --color-bg:#130820; --color-surface:#231330; --color-surface-alt:#341b49;
+  --color-brand:#ff4ecd; --color-brand-accent:#18e0ff;
+  --color-correct:#4ade80; --color-wrong:#ff3d5d;
+  --color-text:#f5e9ff; --color-text-dim:#c7b3d9; --color-border:#412d53;
+  --color-progress-track:#412d53;
+  --color-progress-bar:linear-gradient(90deg,#ff4ecd,#18e0ff 60%,#ffe55a);
+  --shadow:0 10px 30px -12px rgba(255,78,205,.4),0 4px 10px -4px rgba(0,0,0,.5);
+  --focus-ring:0 0 0 3px rgba(255,78,205,.35);
+}
+/* =================== GLOBAL =================== */
+* { box-sizing:border-box; }
+html,body { margin:0; }
+html { font-family:var(--font-stack); }
+body {
+  min-height:100vh; display:flex; align-items:flex-start; justify-content:center;
+  background:radial-gradient(circle at 70% 20%,rgba(129,140,248,.15),transparent 60%), var(--color-bg);
+  padding:2.8rem 1rem 4rem; color:var(--color-text); -webkit-font-smoothing:antialiased;
+}
+.quiz-container {
+  background:linear-gradient(145deg,var(--color-surface),var(--color-surface-alt));
+  padding:2.2rem 2.4rem 2.6rem; border-radius:var(--radius-m);
+  width:clamp(320px,94vw,760px); box-shadow:var(--shadow); position:relative; overflow:hidden;
+}
+.quiz-container:before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(circle at 15% 85%,rgba(255,255,255,.08),transparent 65%), radial-gradient(circle at 90% 15%,rgba(255,255,255,.06),transparent 60%);
+  mix-blend-mode:overlay; pointer-events:none;
+}
+h1{margin:0 0 1rem;text-align:center;font-size:clamp(1.9rem,3vw,2.4rem);font-weight:700;letter-spacing:.5px;
+  background:linear-gradient(90deg,var(--color-brand),var(--color-brand-accent));-webkit-background-clip:text;color:transparent;}
+.subtitle{text-align:center;font-size:.9rem;color:var(--color-text-dim);margin-top:-.4rem;margin-bottom:.9rem;}
+.theme-switcher{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;align-items:center;font-size:.75rem;font-weight:600;letter-spacing:.5px;color:var(--color-text-dim);margin:.5rem 0 1.2rem;}
+.theme-switcher select,.theme-switcher button{
+  background:var(--color-surface-alt);border:1px solid var(--color-border);color:var(--color-text);
+  padding:.55rem .9rem;font-size:.8rem;border-radius:.7rem;outline:none;transition:var(--transition);cursor:pointer;font-weight:600;letter-spacing:.3px;
+}
+.theme-switcher select:hover,.theme-switcher select:focus,.theme-switcher button:hover,.theme-switcher button:focus{
+  border-color:var(--color-brand);box-shadow:0 0 0 2px rgba(56,189,248,.25);
+}
+/* Progreso */
+.progress{height:18px;background:var(--color-progress-track);border-radius:999px;overflow:hidden;position:relative;}
+.progress-bar{height:100%;width:0%;background:var(--color-progress-bar);background-size:200% 100%;animation:progressSheen 5s linear infinite;transition:width var(--transition);}
+@keyframes progressSheen{0%{background-position:0% 50%;}100%{background-position:200% 50%;}}
+/* Pregunta / opciones */
+.question{margin:1.6rem 0 1rem;font-size:1.15rem;font-weight:600;line-height:1.35;}
+.options{display:grid;gap:.75rem;margin-bottom:1.2rem;}
+.option-card{
+  position:relative;display:flex;align-items:flex-start;gap:.65rem;padding:.9rem 1rem .85rem;
+  background:rgba(255,255,255,.04);border:1.5px solid var(--color-border);border-radius:var(--radius-s);
+  cursor:pointer;line-height:1.25;font-weight:500;color:var(--color-text);transition:var(--transition);
+}
+.option-card:hover,.option-card:focus-within{border-color:var(--color-brand);box-shadow:0 0 0 3px rgba(56,189,248,.25);background:rgba(255,255,255,.07);}
+.option-card input[type=radio]{position:absolute;opacity:0;inset:0;cursor:pointer;}
+.option-card.selected{
+  background:linear-gradient(135deg,rgba(56,189,248,.22),rgba(129,140,248,.18));
+  border-color:var(--color-brand-accent);box-shadow:0 0 0 3px rgba(129,140,248,.32);transform:translateY(-2px);
+}
+.options.answered .option-card:not(.selected){opacity:.62;}
+.option-indicator{width:20px;height:20px;border:2px solid var(--color-border);border-radius:50%;margin-top:2px;flex-shrink:0;transition:var(--transition);}
+.option-card.selected .option-indicator{border-color:var(--color-brand-accent);background:radial-gradient(circle at 50% 50%,var(--color-brand) 45%,transparent 46%);}
+/* Botones */
+.buttons{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:.2rem;}
+.buttons button{
+  background:linear-gradient(135deg,var(--color-brand),var(--color-brand-accent));color:#fff;border:none;
+  padding:.75rem 1.15rem;border-radius:.7rem;font-size:.95rem;font-weight:600;letter-spacing:.3px;
+  cursor:pointer;position:relative;transition:var(--transition);box-shadow:0 4px 12px -4px rgba(0,0,0,.4);min-width:120px;
+}
+.buttons button:hover{transform:translateY(-3px);box-shadow:0 8px 18px -6px rgba(0,0,0,.55);}
+.buttons button:active{transform:translateY(0);box-shadow:0 2px 8px -2px rgba(0,0,0,.5);}
+.buttons button:focus-visible{outline:none;box-shadow:var(--focus-ring);}
+.buttons button:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;}
+/* Resultado */
+#result{
+  margin-top:1.7rem;text-align:center;font-size:1.1rem;font-weight:600;
+  color:var(--color-text);letter-spacing:.3px;
+}
+.grade-badge{
+  display:inline-block;padding:.35rem .7rem;border-radius:.6rem;
+  font-weight:700;font-size:.95rem;line-height:1;letter-spacing:.5px;
+  box-shadow:0 2px 6px -2px rgba(0,0,0,.35);
+}
+.grade-A{background:linear-gradient(90deg,#10b981,#34d399);color:#062e20;}
+.grade-B{background:linear-gradient(90deg,#3b82f6,#6366f1);color:#0b1c3a;}
+.grade-C{background:linear-gradient(90deg,#f59e0b,#fbbf24);color:#3a2502;}
+.grade-D{background:linear-gradient(90deg,#f97316,#fb923c);color:#3a1902;}
+.grade-F{background:linear-gradient(90deg,#ef4444,#f87171);color:#3a0606;}
+.medal{
+  margin:.9rem auto 0;width:max-content;padding:.55rem 1.15rem;border-radius:2rem;
+  font-size:.85rem;font-weight:600;letter-spacing:.5px;
+  background:linear-gradient(120deg,#ffd700,#ffb200,#ffe680);color:#473c05;
+  box-shadow:0 4px 12px -4px rgba(0,0,0,.4);
+}
+.medal.plata{background:linear-gradient(120deg,#d9d9d9,#b5b5b5,#ececec);color:#303030;}
+.medal.bronce{background:linear-gradient(120deg,#cd7f32,#b06824,#e6b37d);color:#3b230c;}
+/* Feedback */
+.toggle-feedback{
+  display:inline-block;margin:1.1rem auto 0;background:var(--color-surface-alt);
+  padding:.6rem 1rem;border-radius:.6rem;cursor:pointer;font-weight:600;
+  border:1px solid var(--color-border);transition:var(--transition);font-size:.9rem;
+}
+.toggle-feedback:hover{border-color:var(--color-brand);color:var(--color-brand);}
+.feedback-container{margin-top:1rem;display:none;}
+.feedback-item{
+  background:rgba(255,255,255,.05);border:1px solid var(--color-border);
+  border-left:4px solid var(--color-brand);padding:.85rem 1rem;border-radius:.6rem;
+  margin:.7rem 0;font-size:.9rem;line-height:1.3;
+}
+.feedback-item.correct{border-left-color:var(--color-correct);}
+.feedback-item.incorrect{border-left-color:var(--color-wrong);}
+.feedback-item strong{color:var(--color-text);}
+.feedback-item em{color:var(--color-text-dim);font-style:normal;display:block;margin-top:.35rem;}
+/* Responsive */
+@media (max-width:620px){
+  .quiz-container{padding:1.6rem 1.3rem 2rem;}
+  .question{font-size:1.05rem;}
+  body{padding:1.4rem .5rem 3rem;}
+}
+</style>
+</head>
+<body class="theme-aurora">
+  <div class="quiz-container" id="container">
+    <h1>Accidentes Morfológicos</h1>
+    <div class="subtitle">Responde las preguntas y revisa tu desempeño al final.</div>
+
+    <div class="theme-switcher">
+      <label for="themeSelect">Tema:</label>
+      <select id="themeSelect" onchange="onThemeSelect(this.value)">
+        <option value="auto">Auto</option>
+        <option value="theme-aurora" selected>Aurora</option>
+        <option value="theme-solar">Energía Solar</option>
+        <option value="theme-forest">Bosque Calmo</option>
+        <option value="theme-lab">Estudio Científico</option>
+        <option value="theme-candy">Juventud Gamificada</option>
+      </select>
+      <button type="button" onclick="resetTheme()">Reset</button>
+    </div>
+
+    <div class="progress" aria-label="Progreso">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <div id="quiz"></div>
+
+    <div class="buttons">
+      <button onclick="prevQuestion()" id="prevBtn">Anterior</button>
+      <button onclick="nextQuestion()" id="nextBtn">Siguiente</button>
+      <button onclick="restartQuiz()">Reiniciar</button>
+      <button onclick="shuffleQuestions()">Reorganizar</button>
+      <button onclick="finishQuiz()" id="finishBtn">Finalizar</button>
+    </div>
+
+    <div id="result"></div>
+    <div id="medalContainer"></div>
+    <div id="feedback"></div>
+  </div>
+
+<script>
+/* ============== PREGUNTAS ============== */
+let questions = [
+  {
+    "q": "¿Qué línea divide el rostro en dos segmentos y pasa por la unión de los incisivos centrales superiores?",
+    "options": [
+      "Línea cervical",
+      "Plano oclusal",
+      "Línea media",
+      "Línea interpupilar",
+      "Plano sagital dental",
+      "Línea comisural"
+    ],
+    "answer": 2,
+    "explanation": "La línea media divide la cara en mitades derecha e izquierda y pasa por la unión de los incisivos centrales superiores; sirve de referencia para definir mesial y distal."
+  },
+  {
+    "q": "La cara del diente que está más próxima a la línea media facial se denomina:",
+    "options": [
+      "Mesial",
+      "Lingual",
+      "Distal",
+      "Vestibular",
+      "Oclusal",
+      "Cervical"
+    ],
+    "answer": 0,
+    "explanation": "Mesial es la superficie que se aproxima a la línea media; distal se aleja."
+  },
+  {
+    "q": "¿Cómo se denominan en conjunto las caras mesial y distal?",
+    "options": [
+      "Caras libres",
+      "Caras proximales",
+      "Caras internas",
+      "Caras oclusales",
+      "Caras marginales",
+      "Caras axiales"
+    ],
+    "answer": 1,
+    "explanation": "Mesial y distal establecen contacto entre piezas vecinas y se agrupan como caras proximales."
+  },
+  {
+    "q": "En los dientes anteriores, ¿qué caras, además de las proximales, se consideran \"caras libres\"?",
+    "options": [
+      "Mesial y distal",
+      "Vestibular y oclusal",
+      "Palatina y distal",
+      "Labial y lingual",
+      "Incisal y cervical",
+      "Buccal y mesial"
+    ],
+    "answer": 3,
+    "explanation": "En anteriores, las caras libres son labial y lingual; en posteriores se habla de bucal/vestibular y lingual."
+  },
+  {
+    "q": "¿Qué cara está en relación directa con los labios y solo existe en dientes anteriores?",
+    "options": [
+      "Buccal o vestibular",
+      "Palatina",
+      "Lingual",
+      "Incisal",
+      "Labial (también llamada facial)",
+      "Oclusal"
+    ],
+    "answer": 4,
+    "explanation": "La cara labial (o facial en algunos autores) existe solo en incisivos y caninos; en posteriores la superficie homóloga es bucal/vestibular."
+  },
+  {
+    "q": "¿Qué cara se encuentra únicamente en dientes posteriores y participa directamente en la trituración?",
+    "options": [
+      "Incisal",
+      "Cervical",
+      "Mesial",
+      "Lingual",
+      "Vestibular",
+      "Oclusal"
+    ],
+    "answer": 5,
+    "explanation": "La cara oclusal es exclusiva de premolares y molares y es la principal en la función masticatoria."
+  },
+  {
+    "q": "En una arcada sin malposiciones, las caras que se acercan a la línea media facial corresponden a:",
+    "options": [
+      "Caras distales",
+      "Caras cervicales",
+      "Caras apicales",
+      "Caras oclusales",
+      "Caras vestibulares",
+      "Caras mesiales"
+    ],
+    "answer": 5,
+    "explanation": "Las caras mesiales son las que miran hacia la línea media; las distales se alejan."
+  },
+  {
+    "q": "¿Cuál de las siguientes es una clasificación general correcta de los accidentes morfológicos dentarios?",
+    "options": [
+      "Corona y raíz",
+      "Circunscritos y lineales",
+      "Primarios y secundarios",
+      "Medianos y marginales",
+      "Axiales y radiculares",
+      "Incisales y oclusales"
+    ],
+    "answer": 1,
+    "explanation": "Los accidentes morfológicos se clasifican en elevaciones y depresiones que, a su vez, pueden ser circunscritos o lineales."
+  },
+  {
+    "q": "¿Cuál es la elevación circunscrita más desarrollada, compuesta por esmalte y dentina, de forma piramidal?",
+    "options": [
+      "Cresta",
+      "Reborde marginal",
+      "Tubérculo",
+      "Cíngulo",
+      "Cúspide",
+      "Reborde cuspídeo"
+    ],
+    "answer": 4,
+    "explanation": "La cúspide es la elevación circunscrita principal, posee esmalte y dentina y se ubica en las caras oclusales de premolares y molares."
+  },
+  {
+    "q": "Elevación circunscrita inconstante que puede presentarse en cualquier cara y diente, a veces solo de esmalte:",
+    "options": [
+      "Cúspide",
+      "Cíngulo",
+      "Reborde triangular",
+      "Tubérculo",
+      "Cresta",
+      "Borde"
+    ],
+    "answer": 3,
+    "explanation": "El tubérculo es inconstante; ejemplos: de Carabelli, Sextum, de Selenka."
+  },
+  {
+    "q": "Protuberancia convexa de esmalte en el tercio cervical de la superficie lingual/palatina de dientes anteriores:",
+    "options": [
+      "Borde incisal",
+      "Reborde marginal",
+      "Cíngulo",
+      "Reborde mediano lingual",
+      "Cresta",
+      "Reborde cuspídeo"
+    ],
+    "answer": 2,
+    "explanation": "El cíngulo se localiza en el tercio cervical lingual de incisivos y caninos superiores e inferiores."
+  },
+  {
+    "q": "Elevación lineal formada por la unión de dos caras de una pieza dentaria, de corona o raíz:",
+    "options": [
+      "Borde",
+      "Cresta",
+      "Reborde proximal",
+      "Reborde cuspídeo",
+      "Reborde triangular",
+      "Pliegue cervical"
+    ],
+    "answer": 0,
+    "explanation": "El borde resulta de la confluencia de dos superficies; es un término general."
+  },
+  {
+    "q": "Estructura tubular ubicada en caras linguales de anteriores y caras oclusales de posteriores; puede ser marginal:",
+    "options": [
+      "Cresta",
+      "Reborde",
+      "Borde",
+      "Reborde cuspídeo",
+      "Cíngulo",
+      "Reborde incisal"
+    ],
+    "answer": 1,
+    "explanation": "El reborde (marginal/proximal) es tubular y está en lingual de anteriores y oclusal de posteriores."
+  },
+  {
+    "q": "Accidente que va del vértice de una cúspide al fondo del surco principal, exclusivo de piezas posteriores:",
+    "options": [
+      "Reborde mediano lingual",
+      "Borde incisal",
+      "Cresta",
+      "Reborde triangular",
+      "Reborde marginal",
+      "Reborde cuspídeo"
+    ],
+    "answer": 3,
+    "explanation": "El reborde triangular nace en la cúspide y desciende hacia el surco principal."
+  },
+  {
+    "q": "Formada por la unión de dos rebordes triangulares; también llamada \"listón de esmalte\":",
+    "options": [
+      "Reborde cuspídeo",
+      "Cresta oblicua",
+      "Cresta",
+      "Reborde marginal",
+      "Borde",
+      "Cíngulo"
+    ],
+    "answer": 2,
+    "explanation": "La cresta resulta de dos rebordes triangulares y se denomina listón de esmalte; es típica de posteriores."
+  },
+  {
+    "q": "Elevación de contorno redondeado que sale lateralmente del vértice cuspídeo:",
+    "options": [
+      "Cresta",
+      "Reborde marginal",
+      "Reborde triangular",
+      "Borde",
+      "Cíngulo",
+      "Reborde cuspídeo"
+    ],
+    "answer": 5,
+    "explanation": "El reborde cuspídeo se proyecta lateralmente desde una cúspide."
+  },
+  {
+    "q": "Proyección en caninos: unión de la proyección del cíngulo hacia incisal y del reborde bucal hacia lingual:",
+    "options": [
+      "Borde incisal",
+      "Reborde marginal mesial",
+      "Cresta",
+      "Reborde triangular",
+      "Reborde mediano lingual",
+      "Tubérculo de Carabelli"
+    ],
+    "answer": 4,
+    "explanation": "El reborde mediano lingual está en el tercio medio de la cara lingual de caninos."
+  },
+  {
+    "q": "¿Cuál es la depresión circunscrita más profunda y amplia en dientes, localizada centralmente en oclusal de posteriores?",
+    "options": [
+      "Fosa",
+      "Foseta",
+      "Pozo",
+      "Pozuelo",
+      "Ranura primaria",
+      "Surco"
+    ],
+    "answer": 0,
+    "explanation": "La fosa es la depresión circunscrita mayor; puede ser fosa central en oclusal o fosa lingual en anteriores."
+  },
+  {
+    "q": "Pequeña depresión junto a rebordes proximales en oclusal de posteriores, a menudo triangular:",
+    "options": [
+      "Pozo",
+      "Pozuelo",
+      "Foseta",
+      "Fosa lingual",
+      "Surco principal",
+      "Ranura secundaria"
+    ],
+    "answer": 2,
+    "explanation": "La foseta es menor que la fosa y suele ser triangular (foseta triangular) en posteriores."
+  },
+  {
+    "q": "Depresión circunscrita que suele ubicarse al final de una ranura primaria en caras bucal y lingual de molares:",
+    "options": [
+      "Pozo",
+      "Surco",
+      "Foseta",
+      "Pozuelo",
+      "Fisura",
+      "Ranura secundaria"
+    ],
+    "answer": 0,
+    "explanation": "El pozo aparece frecuentemente al término de la ranura primaria; el pozuelo es aún más pequeño y dentro del pozo."
+  },
+  {
+    "q": "Depresión microscópica dentro del pozo, no visible a simple vista:",
+    "options": [
+      "Fosa",
+      "Pozuelo",
+      "Foseta",
+      "Fisura",
+      "Surco",
+      "Ranura primaria"
+    ],
+    "answer": 1,
+    "explanation": "El pozuelo se localiza dentro del pozo y no se aprecia clínicamente sin magnificación."
+  },
+  {
+    "q": "Depresión lineal amplia en la cara oclusal de posteriores; sus límites son las vertientes de las cúspides:",
+    "options": [
+      "Ranura primaria",
+      "Ranura secundaria",
+      "Fisura",
+      "Surco",
+      "Canal radicular",
+      "Surco interadicular"
+    ],
+    "answer": 3,
+    "explanation": "El surco recorre oclusal; si lo hace mesiodistalmente se llama surco principal/primordial/mesiodistal."
+  },
+  {
+    "q": "Si un surco recorre la cara oclusal en sentido mesiodistal, también se denomina:",
+    "options": [
+      "Surco oblicuo",
+      "Surco transversal",
+      "Ranura primaria",
+      "Ranura secundaria",
+      "Surco principal o primordial",
+      "Canal radicular"
+    ],
+    "answer": 4,
+    "explanation": "El surco principal es el trayecto mesiodistal fundamental del patrón oclusal."
+  },
+  {
+    "q": "Depresión lineal que divide dos lóbulos de desarrollo y se ubica en caras libres de las piezas dentarias:",
+    "options": [
+      "Ranura secundaria",
+      "Surco",
+      "Fisura",
+      "Canal radicular",
+      "Surco interadicular",
+      "Ranura primaria"
+    ],
+    "answer": 5,
+    "explanation": "La ranura primaria marca el límite entre lóbulos de desarrollo, típicamente visible en bucal/lingual."
+  },
+  {
+    "q": "Trayecto lineal complementario del relieve oclusal que no separa lóbulos de desarrollo:",
+    "options": [
+      "Surco principal",
+      "Fisura",
+      "Pozo",
+      "Foseta",
+      "Surco interadicular",
+      "Ranura secundaria"
+    ],
+    "answer": 5,
+    "explanation": "La ranura secundaria refina el patrón oclusal; no divide lóbulos."
+  },
+  {
+    "q": "Depresión lineal ubicada en las caras libres de las raíces de molares y que separa la raíz mesial de la distal:",
+    "options": [
+      "Canal radicular",
+      "Surco interadicular",
+      "Fisura",
+      "Ranura primaria",
+      "Ranura secundaria",
+      "Surco transversal"
+    ],
+    "answer": 1,
+    "explanation": "El surco interadicular divide raíces (en molares sup. también aparece en proximales separando la raíz palatina)."
+  },
+  {
+    "q": "Depresión lineal en caras proximales de raíces (incisivos inferiores, caninos, y premolares):",
+    "options": [
+      "Surco interadicular",
+      "Fisura",
+      "Ranura primaria",
+      "Surco marginal",
+      "Canal radicular",
+      "Surco principal"
+    ],
+    "answer": 4,
+    "explanation": "El canal radicular es una depresión en caras proximales radiculares y, a diferencia del surco interadicular, no divide raíces."
+  },
+  {
+    "q": "¿Cuál de los siguientes pares está correctamente asociado con su ubicación característica?",
+    "options": [
+      "Cíngulo — tercio incisal de anteriores",
+      "Foseta triangular — cara lingual de incisivos",
+      "Cúspide — cara vestibular de incisivos",
+      "Reborde mediano lingual — caninos",
+      "Fosa central — cara lingual de caninos",
+      "Surco interadicular — cara incisal de caninos"
+    ],
+    "answer": 3,
+    "explanation": "El reborde mediano lingual es propio de caninos; el cíngulo es cervical (no incisal); la foseta triangular es oclusal en posteriores."
+  },
+  {
+    "q": "Autor/es que denominan la cara labial como 'cara facial' en dientes anteriores:",
+    "options": [
+      "Black y Wheeler",
+      "Ash y Nelson",
+      "Penmar, Arcoria y Woelfel",
+      "Angle y Gysi",
+      "Schwarz y Sicher",
+      "Nadie la denomina así"
+    ],
+    "answer": 2,
+    "explanation": "Se menciona explícitamente Penmar, Arcoria y Woelfel como autores que llaman 'cara facial' a la cara labial."
+  },
+  {
+    "q": "Seleccione la afirmación correcta sobre las caras libres en piezas posteriores:",
+    "options": [
+      "Son bucal/vestibular y lingual",
+      "Son labial y lingual",
+      "Son mesial y distal",
+      "Son incisal y cervical",
+      "Solo existe lingual como cara libre",
+      "No hay caras libres en posteriores"
+    ],
+    "answer": 0,
+    "explanation": "En posteriores se usa bucal/vestibular para la cara externa y lingual para la interna; ambas se consideran 'caras libres'."
+  },
+  {
+    "q": "¿Cuál es la relación correcta entre fosa y foseta?",
+    "options": [
+      "La foseta es más amplia que la fosa",
+      "La fosa es más amplia y profunda",
+      "Ambas solo aparecen en anteriores",
+      "La fosa se localiza junto a rebordes proximales",
+      "La foseta está siempre en caras linguales de anteriores",
+      "Ninguna es depresión circunscrita"
+    ],
+    "answer": 1,
+    "explanation": "La fosa es la depresión circunscrita más amplia y profunda; la foseta es menor y suele estar junto a rebordes proximales en oclusal."
+  },
+  {
+    "q": "¿Cómo se nombra el surco ubicado entre dos cúspides cercano a una cara libre?",
+    "options": [
+      "Surco oblicuo",
+      "Surco transversal",
+      "Surco interadicular",
+      "Surco palatino o bucal, según la cara más cercana",
+      "Surco marginal",
+      "Surco secundario"
+    ],
+    "answer": 3,
+    "explanation": "Si el surco se ubica entre cúspides, recibe el nombre de la cara libre más próxima: bucal o lingual (palatina en superiores)."
+  },
+  {
+    "q": "La 'ley función' afirma, entre otras cosas, que conforme una pieza es más anterior:",
+    "options": [
+      "Tiene mayor función masticatoria y menor estética",
+      "Disminuye la cantidad de esmalte",
+      "Tiene más función estética y menos masticatoria",
+      "Aumenta el número de raíces",
+      "Disminuye el tamaño del cíngulo",
+      "Aumenta el número de cúspides"
+    ],
+    "answer": 2,
+    "explanation": "Piezas anteriores priorizan la estética sobre la trituración, que aumenta hacia posteriores."
+  },
+  {
+    "q": "Según la ley de los periquematíes (líneas de imbricación):",
+    "options": [
+      "Son más marcados en piezas más posteriores",
+      "Desaparecen en caninos",
+      "Se acentúan en premolares superiores",
+      "Se aprecian solo en molares",
+      "No presentan excepciones",
+      "Conforme más posterior, menos marcados; excepción: incisivo central inferior permanente"
+    ],
+    "answer": 5,
+    "explanation": "La ley indica menor marcación hacia posterior; excepción señalada: incisivo central inferior permanente."
+  },
+  {
+    "q": "En una misma pieza, ¿qué escotadura suele ser más profunda según la ley de las escotaduras?",
+    "options": [
+      "La distal es más profunda",
+      "No hay diferencia",
+      "La cervical es más profunda",
+      "La incisal es más profunda",
+      "La mesial es más profunda",
+      "Depende del arco superior/inferior exclusivamente"
+    ],
+    "answer": 4,
+    "explanation": "En la misma pieza, la escotadura mesial es más profunda. Además, hacia posterior, las escotaduras son menos profundas."
+  },
+  {
+    "q": "Respecto a la ley de las caras proximales (tamaño):",
+    "options": [
+      "La cara mesial suele ser más grande; excepciones: 1er premolar inferior y 1er molar inferior preliminar",
+      "La cara distal suele ser más grande que la mesial",
+      "No existen excepciones",
+      "Se aplica solo a dientes superiores",
+      "La cara distal siempre es menor en altura pero mayor en anchura",
+      "Aplica solo a dientes anteriores"
+    ],
+    "answer": 0,
+    "explanation": "La regla general es mesial > distal, con excepciones específicas: 1er premolar inferior y 1er molar inferior preliminar."
+  },
+  {
+    "q": "Según la ley de las caras proximales (contactos):",
+    "options": [
+      "Todas las caras distales contactan con caras distales vecinas",
+      "Las caras mesiales de incisivos centrales no contactan entre sí",
+      "Toda cara proximal mesial contacta con la distal del diente vecino; excepciones: incisivos centrales entre sí, y distal de terceros molares",
+      "Los terceros molares contactan distalmente con el cuarto molar",
+      "No hay excepciones en incisivos",
+      "La regla aplica solo en la arcada superior"
+    ],
+    "answer": 2,
+    "explanation": "La regla general tiene dos excepciones: incisivos centrales hacen contacto mesial con mesial entre sí y la distal de terceros molares no contacta con nadie."
+  },
+  {
+    "q": "Ley de la convergencia de las caras proximales:",
+    "options": [
+      "Convergen hacia lingual; excepciones: 2º premolar inferior tipo Y y 1º molar superior permanente",
+      "Todas convergen hacia bucal",
+      "Convergen hacia distal siempre",
+      "Solo los caninos convergen hacia lingual",
+      "No presentan excepciones",
+      "Se refiere a la convergencia hacia la línea media"
+    ],
+    "answer": 0,
+    "explanation": "La convergencia típica es hacia lingual; existen las dos excepciones señaladas."
+  },
+  {
+    "q": "Relacione correctamente el accidente y su carácter 'exclusivo de posteriores':",
+    "options": [
+      "Cíngulo — exclusivo de posteriores",
+      "Reborde triangular — exclusivo de posteriores",
+      "Borde — exclusivo de posteriores",
+      "Reborde mediano lingual — exclusivo de posteriores",
+      "Borde incisal — exclusivo de posteriores",
+      "Fosa lingual — exclusiva de posteriores"
+    ],
+    "answer": 1,
+    "explanation": "El reborde triangular es propio de piezas posteriores; cíngulo y reborde mediano lingual son de anteriores."
+  },
+  {
+    "q": "¿Cuál de las siguientes combinaciones es FALSA?",
+    "options": [
+      "Fosa central — cara oclusal de posteriores",
+      "Fosa lingual — cara lingual de anteriores",
+      "Foseta triangular — cara oclusal de posteriores",
+      "Pozuelo — visible a simple vista",
+      "Pozo — final de ranura primaria",
+      "Surco principal — mesiodistal en oclusal"
+    ],
+    "answer": 3,
+    "explanation": "El pozuelo se ubica dentro del pozo y no es visible a simple vista; las demás asociaciones son correctas."
+  },
+  {
+    "q": "En molares superiores, el surco interadicular puede observarse además de en caras libres radiculares, en:",
+    "options": [
+      "Caras incisal y cervical",
+      "Solo en cara bucal",
+      "Solo en cara palatina",
+      "No existe en molares superiores",
+      "Caras proximales, separando también la raíz palatina",
+      "Solo en primeros molares"
+    ],
+    "answer": 4,
+    "explanation": "En molares superiores, además de las caras libres radiculares, puede hallarse en proximales separando la raíz palatina."
+  },
+  {
+    "q": "Marca la opción CORRECTA sobre canal radicular vs. surco interadicular:",
+    "options": [
+      "Ambos dividen raíces",
+      "El surco interadicular no está en raíces",
+      "El canal radicular se observa únicamente en molares",
+      "El canal radicular divide la raíz palatina",
+      "Ninguna es depresión lineal",
+      "El canal radicular NO divide raíces; el surco interadicular SÍ"
+    ],
+    "answer": 5,
+    "explanation": "El surco interadicular divide raíces; el canal radicular es una depresión proximal que no divide nada."
+  },
+  {
+    "q": "El término 'cara facial' en anteriores puede equivaler a:",
+    "options": [
+      "Cara palatina",
+      "Cara distal",
+      "Cara mesial",
+      "Cara oclusal",
+      "Cara incisal",
+      "Cara labial"
+    ],
+    "answer": 5,
+    "explanation": "Algunos autores (Penmar, Arcoria, Woelfel) usan 'facial' como sinónimo de labial en anteriores."
+  },
+  {
+    "q": "¿Cuál afirmación sobre 'caras libres' es VERDADERA?",
+    "options": [
+      "En anteriores son bucal y lingual",
+      "En anteriores son labial y lingual",
+      "En posteriores son labial y palatina",
+      "No existen en anteriores",
+      "En posteriores son incisal y lingual",
+      "En posteriores solo es bucal"
+    ],
+    "answer": 1,
+    "explanation": "En anteriores: labial y lingual; en posteriores: bucal/vestibular y lingual."
+  },
+  {
+    "q": "La unión de dos rebordes triangulares recibe el nombre de:",
+    "options": [
+      "Cíngulo",
+      "Borde incisal",
+      "Pozo",
+      "Foseta",
+      "Cresta",
+      "Reborde marginal"
+    ],
+    "answer": 4,
+    "explanation": "Dos rebordes triangulares conforman una cresta (listón de esmalte)."
+  },
+  {
+    "q": "¿En qué región de los caninos se localiza el reborde mediano lingual?",
+    "options": [
+      "Tercio incisal de cara bucal",
+      "Tercio cervical de cara bucal",
+      "Tercio medio de cara bucal",
+      "Tercio medio de cara lingual",
+      "Tercio cervical de cara lingual",
+      "Borde incisal"
+    ],
+    "answer": 3,
+    "explanation": "Se describe en el tercio mediano de la cara lingual por la proyección combinada del cíngulo y el reborde bucal."
+  },
+  {
+    "q": "Relacione la ubicación correcta del cíngulo:",
+    "options": [
+      "Tercio incisal de cara lingual",
+      "Tercio medio de cara bucal",
+      "Tercio cervical de cara lingual",
+      "Tercio cervical de cara bucal",
+      "Borde incisal",
+      "Centro de cara oclusal"
+    ],
+    "answer": 2,
+    "explanation": "El cíngulo es una protuberancia en el tercio cervical lingual/palatino de dientes anteriores."
+  },
+  {
+    "q": "La foseta triangular suele asociarse a:",
+    "options": [
+      "Caras oclusales de posteriores junto a rebordes proximales",
+      "Caras proximales de caninos tipo II",
+      "Borde incisal",
+      "Surcos interadiculares",
+      "Ranuras secundarias",
+      "Rebordes cuspídeos"
+    ],
+    "answer": 0,
+    "explanation": "La foseta triangular se ubica en la cara oclusal de las piezas posteriores adyacente a los rebordes proximales."
+  },
+  {
+    "q": "Una característica diferencial de la ranura primaria frente a la secundaria es que:",
+    "options": [
+      "La secundaria separa lóbulos",
+      "La primaria separa lóbulos de desarrollo",
+      "La secundaria siempre termina en pozo",
+      "La primaria solo aparece en molares",
+      "La secundaria aparece en caras radiculares",
+      "La primaria no se observa clínicamente"
+    ],
+    "answer": 1,
+    "explanation": "La ranura primaria delimita lóbulos; la secundaria modela detalles oclusales."
+  },
+  {
+    "q": "¿Qué enunciado sobre la ley de las escotaduras es CORRECTO?",
+    "options": [
+      "Las escotaduras distales son más profundas en la misma pieza",
+      "Conforme más posterior, más profundas",
+      "No hay diferencias mesial/distal",
+      "La mesial es más profunda en la misma pieza; hacia posterior se hacen menos profundas",
+      "Aplica solo a incisivos",
+      "Se limita a molares superiores"
+    ],
+    "answer": 3,
+    "explanation": "Regla: mesial > distal en profundidad; y disminuye la profundidad hacia posterior."
+  },
+  {
+    "q": "¿Qué accidente corresponde a una elevación circunscrita que puede estar compuesta solo por esmalte?",
+    "options": [
+      "Cúspide",
+      "Cresta",
+      "Tubérculo",
+      "Reborde marginal",
+      "Borde",
+      "Reborde triangular"
+    ],
+    "answer": 2,
+    "explanation": "El tubérculo suele ser de esmalte; en ocasiones puede tener extensión pulpar en anomalías."
+  },
+  {
+    "q": "La denominación 'cara bucal' es más adecuada para:",
+    "options": [
+      "Caninos superiores",
+      "Incisivos inferiores",
+      "Todos los dientes",
+      "Solo terceros molares",
+      "Ninguno, se usa labial",
+      "Premolares y molares"
+    ],
+    "answer": 5,
+    "explanation": "En posteriores no contactan con labios; se denomina bucal o vestibular."
+  },
+  {
+    "q": "¿Cuál asociación es correcta respecto a depresiones circunscritas?",
+    "options": [
+      "Fosa — la menor depresión",
+      "Pozo — visible solo con lupa intraoral",
+      "Pozuelo — mayor que el pozo",
+      "Fosa — ubicada exclusivamente en anteriores",
+      "Foseta — más pequeña que la fosa",
+      "Foseta — exclusiva de caras linguales"
+    ],
+    "answer": 4,
+    "explanation": "Foseta es menor que fosa; el pozuelo está dentro del pozo y no se aprecia a simple vista."
+  },
+  {
+    "q": "¿Qué accidente se denomina también 'surco mesiodistal'?",
+    "options": [
+      "Surco principal",
+      "Ranura secundaria",
+      "Surco interadicular",
+      "Canal radicular",
+      "Ranura primaria",
+      "Fisura marginal"
+    ],
+    "answer": 0,
+    "explanation": "El surco que recorre oclusal en sentido mesiodistal se llama principal/primordial/mesiodistal."
+  },
+  {
+    "q": "Indique la opción correcta sobre contactos proximales:",
+    "options": [
+      "Todas las caras proximales mesiales contactan con mesiales vecinas",
+      "Las distales de terceros molares siempre contactan con segundos molares",
+      "Las caras mesiales de incisivos centrales contactan entre sí",
+      "No hay excepciones en incisivos",
+      "En caninos no hay contacto proximal mesial",
+      "Los contactos proximales se limitan a anteriores"
+    ],
+    "answer": 2,
+    "explanation": "Excepción clave: incisivos centrales contactan mesial con mesial; además, la distal de terceros molares no contacta con nadie."
+  },
+  {
+    "q": "Seleccione el enunciado verdadero sobre la ley función:",
+    "options": [
+      "Los dientes anteriores tienen más función estética que masticatoria",
+      "Los molares son más estéticos que funcionales",
+      "Los incisivos concentran la función masticatoria",
+      "La estética no varía por posición anteroposterior",
+      "Los premolares no intervienen en masticación",
+      "Los caninos carecen de función estética"
+    ],
+    "answer": 0,
+    "explanation": "El gradiente funcional va incrementando hacia posteriores; anteriores destacan en estética."
+  },
+  {
+    "q": "Señale la ubicación típica del pozo en anteriores:",
+    "options": [
+      "Borde incisal",
+      "Unión de rebordes proximales tipo V",
+      "Centro de cara lingual",
+      "Surco principal",
+      "Reborde marginal distal",
+      "Cervical bucal"
+    ],
+    "answer": 1,
+    "explanation": "El pozo en anteriores se describe en la unión de rebordes proximales tipo V; también aparece al final de ranuras primarias en molares (bucal/lingual)."
+  },
+  {
+    "q": "¿Qué enunciado diferencia con precisión reborde y borde?",
+    "options": [
+      "El borde es tubular; el reborde es unión de caras",
+      "Ambos son equivalentes",
+      "El borde es exclusivo de posteriores",
+      "El reborde es tubular; el borde es la unión de dos caras",
+      "El reborde solo existe en anteriores",
+      "El borde tiene esmalte y dentina; el reborde, solo esmalte"
+    ],
+    "answer": 3,
+    "explanation": "El reborde es tubular y puede ser marginal/proximal; el borde es la unión geométrica de dos caras."
+  },
+  {
+    "q": "Identifique la afirmación FALSA sobre rebordes triangulares:",
+    "options": [
+      "Van desde el vértice de la cúspide al surco principal",
+      "Son exclusivos de posteriores",
+      "La unión de dos forma una cresta",
+      "Son parte del relieve oclusal",
+      "Se localizan en caras libres de anteriores",
+      "Nacen en la cúspide"
+    ],
+    "answer": 4,
+    "explanation": "No se ubican en caras libres de anteriores; son accidentes oclusales en posteriores."
+  },
+  {
+    "q": "El 'listón de esmalte' se refiere a:",
+    "options": [
+      "Un reborde marginal",
+      "Un cíngulo prominente",
+      "El borde incisal",
+      "El reborde mediano lingual",
+      "La unión de dos fosetas",
+      "Una cresta formada por dos rebordes triangulares"
+    ],
+    "answer": 5,
+    "explanation": "Sinónimo de cresta oclusal compuesta por dos rebordes triangulares."
+  },
+  {
+    "q": "Con respecto a la visibilidad clínica de pozo y pozuelo:",
+    "options": [
+      "Ambos son claramente visibles sin magnificación",
+      "Solo el pozuelo es visible",
+      "Ninguno es visible",
+      "Ambos requieren radiografía",
+      "Pozo y pozuelo son equivalentes",
+      "Solo el pozo es visible a simple vista"
+    ],
+    "answer": 5,
+    "explanation": "El pozo sí se aprecia clínicamente; el pozuelo, al estar dentro del pozo y ser diminuto, no se observa a simple vista."
+  },
+  {
+    "q": "¿Cuál combinación es correcta para piezas anteriores?",
+    "options": [
+      "Cara bucal — sinónimo de cara labial",
+      "Fosa lingual — típica en anteriores",
+      "Cara labial — exclusiva de posteriores",
+      "Cara oclusal — presente en caninos",
+      "Reborde mediano lingual — presente en molares",
+      "Cíngulo — ausente en incisivos"
+    ],
+    "answer": 1,
+    "explanation": "La fosa lingual es característica de anteriores; 'bucal' se usa para posteriores; anteriores tienen cara labial y no oclusal."
+  },
+  {
+    "q": "¿Qué accidente lineal NO divide lóbulos de desarrollo?",
+    "options": [
+      "Ranura primaria",
+      "Surco mesiodistal",
+      "Fisura",
+      "Surco interadicular",
+      "Ranura secundaria",
+      "Canal radicular"
+    ],
+    "answer": 4,
+    "explanation": "La ranura secundaria solo perfila el patrón oclusal; la primaria sí separa lóbulos."
+  },
+  {
+    "q": "El patrón 'más posterior → menos marcados' se aplica a:",
+    "options": [
+      "Escotaduras (sin excepción)",
+      "Cúspides",
+      "Rebordes marginales",
+      "Periquematíes (con excepción del incisivo central inferior permanente)",
+      "Fosas",
+      "Ranuras primarias"
+    ],
+    "answer": 3,
+    "explanation": "Periquematíes: disminuyen hacia posterior; excepción importante: incisivo central inferior permanente."
+  },
+  {
+    "q": "Sobre la ley de convergencia proximal, indique la opción INCORRECTA:",
+    "options": [
+      "Las caras proximales convergen hacia lingual",
+      "El 2º premolar inferior tipo Y es excepción",
+      "Convergen hacia bucal en todos los dientes",
+      "El 1º molar superior permanente es excepción",
+      "Presenta excepciones limitadas",
+      "Se observa en ambos arcos"
+    ],
+    "answer": 2,
+    "explanation": "La convergencia típica es hacia lingual; no hacia bucal en todos los dientes."
+  },
+  {
+    "q": "Seleccione la opción que mejor diferencia 'surco' y 'fisura':",
+    "options": [
+      "El surco es amplio/extendido; la fisura es un defecto estrecho/profundo",
+      "El surco es circunscrito; la fisura es lineal",
+      "La fisura es circunscrita; el surco es radicular",
+      "Ambos son sinónimos",
+      "La fisura se ubica solo en caras proximales",
+      "El surco solo aparece en anteriores"
+    ],
+    "answer": 0,
+    "explanation": "El surco es una depresión lineal amplia en oclusal; la fisura es un trazo estrecho/profundo, potencial sitio de retención."
+  },
+  {
+    "q": "¿Cuál afirmación integra correctamente ubicación y función?",
+    "options": [
+      "Cara oclusal — estética principal",
+      "Caras libres (labial/lingual en anteriores) — relación con labios y lengua",
+      "Caras proximales — sin contacto con dientes vecinos",
+      "Cresta — depresión circunscrita",
+      "Fosa central — elevación circunscrita",
+      "Reborde cuspídeo — unión de dos caras"
+    ],
+    "answer": 1,
+    "explanation": "Las caras libres se relacionan con tejidos blandos (labios/lengua); oclusal es funcional; cresta es elevación lineal."
+  },
+  {
+    "q": "En relación con 'caras proximales', señale la opción verdadera:",
+    "options": [
+      "Son labial y lingual",
+      "Son bucal y lingual",
+      "Son incisal y oclusal",
+      "Son mesial y distal",
+      "Son cervical y apical",
+      "No existen en caninos"
+    ],
+    "answer": 3,
+    "explanation": "Proximales = mesial y distal; establecen contactos interdentarios."
+  },
+  {
+    "q": "El 'borde' como accidente morfológico se caracteriza por:",
+    "options": [
+      "Ser tubular",
+      "Ser exclusivo de raíces",
+      "Unir dos caras dentarias",
+      "Conformar el listón de esmalte",
+      "Conformar el cíngulo lingual",
+      "Ser una depresión lineal"
+    ],
+    "answer": 2,
+    "explanation": "A diferencia del reborde (tubular), el borde resulta de la unión geométrica de dos caras."
+  },
+  {
+    "q": "¿Qué enunciado sintetiza mejor la relación reborde triangular → cresta?",
+    "options": [
+      "Un reborde triangular contiene dos crestas",
+      "Una cresta divide dos lóbulos",
+      "Una cresta se ubica en caras libres de anteriores",
+      "Un reborde triangular es circunscrito",
+      "Una cresta es circunscrita",
+      "Dos rebordes triangulares forman una cresta"
+    ],
+    "answer": 5,
+    "explanation": "Cresta = unión de dos rebordes triangulares (listón de esmalte)."
+  },
+  {
+    "q": "En caninos tipo II puede observarse en la cara lingual además de fosa lingual:",
+    "options": [
+      "Pozo",
+      "Pozuelo",
+      "Surco interadicular",
+      "Canal radicular",
+      "Foseta",
+      "Reborde triangular"
+    ],
+    "answer": 4,
+    "explanation": "Se describe la presencia de foseta en cara lingual de caninos tipo II."
+  },
+  {
+    "q": "Un patrón correcto de distribución de contactos proximales indica que:",
+    "options": [
+      "Las caras distales de terceros molares no contactan con ninguna pieza",
+      "Todos los dientes contactan distalmente con un diastema",
+      "Los incisivos centrales no contactan entre sí",
+      "Los caninos superiores no contactan mesialmente",
+      "Los premolares no presentan contacto mesial",
+      "Las caras mesiales de todos los dientes contactan con mesiales vecinas"
+    ],
+    "answer": 0,
+    "explanation": "La distal de los terceros molares no tiene diente vecino distal; es una de las excepciones clásicas."
+  },
+  {
+    "q": "¿Cuál de los siguientes pares accidente–ubicación es INCORRECTO?",
+    "options": [
+      "Cúspide — cara oclusal de posteriores",
+      "Cíngulo — tercio cervical lingual de anteriores",
+      "Ranura primaria — separa crestas triangulares",
+      "Fosa central — oclusal de posteriores",
+      "Reborde mediano lingual — tercio medio lingual de caninos",
+      "Surco interadicular — caras libres radiculares de molares"
+    ],
+    "answer": 2,
+    "explanation": "La ranura primaria separa lóbulos de desarrollo, no crestas triangulares."
+  },
+  {
+    "q": "Indique el enunciado correcto sobre 'caras labial' y 'bucal/vestibular':",
+    "options": [
+      "Labial en anteriores; bucal/vestibular en posteriores",
+      "Labial se usa en posteriores y bucal en anteriores",
+      "Ambas son equivalentes en todos los dientes",
+      "Bucal solo en incisivos",
+      "Labial solo en molares",
+      "Ninguna es cara libre"
+    ],
+    "answer": 0,
+    "explanation": "La nomenclatura distingue labial (anteriores) y bucal/vestibular (posteriores). Ambas son caras libres."
+  },
+  {
+    "q": "¿Qué término describe un defecto lineal profundo y estrecho del esmalte, de alto potencial de retención?",
+    "options": [
+      "Surco",
+      "Fisura",
+      "Ranura primaria",
+      "Ranura secundaria",
+      "Canal radicular",
+      "Surco interadicular"
+    ],
+    "answer": 1,
+    "explanation": "La fisura es un defecto estrecho y profundo del esmalte, distinto del surco que es más amplio."
+  },
+  {
+    "q": "En el contexto de las leyes morfológicas, ¿qué diente representa la excepción clásica a la marcación de periquematíes?",
+    "options": [
+      "Incisivo lateral superior",
+      "Canino inferior",
+      "Primer premolar superior",
+      "Incisivo central inferior permanente",
+      "Primer molar inferior",
+      "Tercer molar superior"
+    ],
+    "answer": 3,
+    "explanation": "La excepción indicada en el material es el incisivo central inferior permanente."
+  },
+  {
+    "q": "¿Qué afirmación resume mejor la tendencia general del tamaño de las caras proximales?",
+    "options": [
+      "Distal > mesial sin excepciones",
+      "No hay patrón",
+      "Depende solo del arco superior",
+      "Depende solo del tipo de diente",
+      "Mesial > distal con excepciones específicas",
+      "Mesial y distal iguales en todos los dientes"
+    ],
+    "answer": 4,
+    "explanation": "La regla es mesial más grande, con excepciones señaladas (1er premolar inferior y 1er molar inferior preliminar)."
+  },
+  {
+    "q": "Una depresión lineal que NO se ubica en caras oclusales sino en caras proximales de raíces es:",
+    "options": [
+      "Surco interadicular",
+      "Surco principal",
+      "Ranura primaria",
+      "Ranura secundaria",
+      "Fisura marginal",
+      "Canal radicular"
+    ],
+    "answer": 5,
+    "explanation": "El canal radicular se observa en caras proximales radiculares de incisivos inferiores, caninos y premolares."
+  },
+  {
+    "q": "¿Cuál afirmación sobre 'caras libres' en anteriores y posteriores es correcta?",
+    "options": [
+      "Anteriores: bucal y palatina; Posteriores: labial y lingual",
+      "Anteriores: solo lingual; Posteriores: bucal y oclusal",
+      "Anteriores: incisal y cervical; Posteriores: bucal y distal",
+      "Anteriores: mesial y distal; Posteriores: labial y lingual",
+      "No existen caras libres en posteriores",
+      "Anteriores: labial y lingual; Posteriores: bucal/vestibular y lingual"
+    ],
+    "answer": 5,
+    "explanation": "Esa es la distribución aceptada y consistente con el material."
+  },
+  {
+    "q": "La estructura que se observa en la cara lingual de anteriores y constituye un relieve cervical prominente es:",
+    "options": [
+      "Reborde triangular",
+      "Cíngulo",
+      "Cresta",
+      "Fosa lingual",
+      "Foseta",
+      "Reborde marginal"
+    ],
+    "answer": 1,
+    "explanation": "El cíngulo es la protuberancia convexa cervical lingual/palatina de los dientes anteriores."
+  },
+  {
+    "q": "En un primer molar superior típico, ¿qué cúspide es la más voluminosa y alta?",
+    "options": [
+      "Mesiobucal",
+      "Distobucal",
+      "Distolingual (distopalatina)",
+      "De Carabelli",
+      "Mesiolingual (mesiopalatina)",
+      "Cúspide de Bolton"
+    ],
+    "answer": 4,
+    "explanation": "La cúspide mesiopalatina (mesiolingual) es la mayor y más alta en el primer molar superior; el ‘Carabelli’ es tubérculo, no cúspide principal."
+  },
+  {
+    "q": "La cresta oblicua de los molares superiores une típicamente:",
+    "options": [
+      "Mesiobucal con distobucal",
+      "Mesiobucal con distolingual",
+      "Mesiolingual con mesiobucal",
+      "Mesiolingual con distobucal",
+      "Distolingual con distobucal",
+      "Cíngulo con cúspide mesiobucal"
+    ],
+    "answer": 3,
+    "explanation": "La cresta oblicua une la cúspide mesiopalatina con la distobucal atravesando la cara oclusal de molares superiores."
+  },
+  {
+    "q": "¿Cuál patrón de surcos oclusales es característico del segundo premolar inferior de tres cúspides?",
+    "options": [
+      "Patrón en T",
+      "Patrón en H",
+      "Patrón en Y",
+      "Patrón en U",
+      "Patrón en X",
+      "Patrón en cruz"
+    ],
+    "answer": 2,
+    "explanation": "El segundo premolar inferior de tres cúspides muestra típicamente patrón en Y (dos cúspides linguales y una bucal)."
+  },
+  {
+    "q": "En la vista oclusal de un primer molar superior, el perímetro coronario suele aproximarse a:",
+    "options": [
+      "Romboide/paralelogramo",
+      "Triángulo equilátero",
+      "Rectángulo perfecto",
+      "Círculo",
+      "Hexágono regular",
+      "Pentágono regular"
+    ],
+    "answer": 0,
+    "explanation": "El contorno oclusal suele ser romboide (paralelogramo), con desviaciones por la presencia de la distolingual."
+  },
+  {
+    "q": "¿Cuál diente presenta con más frecuencia el tubérculo de Carabelli?",
+    "options": [
+      "Segundo molar superior",
+      "Primer molar superior",
+      "Primer molar inferior",
+      "Segundo molar inferior",
+      "Primer premolar superior",
+      "Canino superior"
+    ],
+    "answer": 1,
+    "explanation": "El tubérculo de Carabelli es un relieve accesorio en la cara palatina de la cúspide mesiopalatina del primer molar superior."
+  },
+  {
+    "q": "La cresta transversal se forma por la unión de:",
+    "options": [
+      "Dos rebordes marginales",
+      "El cíngulo y el borde incisal",
+      "Dos bordes proximales",
+      "Un reborde triangular bucal y uno lingual opuestos",
+      "Una cresta oblicua y un reborde marginal",
+      "Dos fisuras oclusales"
+    ],
+    "answer": 3,
+    "explanation": "Una cresta transversal une vértices cuspídeos opuestos (bucal y lingual) a través de sus rebordes triangulares."
+  },
+  {
+    "q": "El primer molar inferior típico tiene:",
+    "options": [
+      "3 raíces: mesiobucal, distobucal y palatina",
+      "1 raíz única",
+      "2 raíces: mesial y distal",
+      "4 raíces: dos bucales, una lingual y una accesoria",
+      "2 raíces: mesiopalatina y distopalatina",
+      "3 raíces fusionadas"
+    ],
+    "answer": 2,
+    "explanation": "En mandíbula son habituales dos raíces (mesial y distal); en maxilar son tres (dos bucales y una palatina)."
+  },
+  {
+    "q": "En incisivos, el borde incisal recién erupcionado puede mostrar:",
+    "options": [
+      "Periquematíes muy profundos",
+      "Crestas oblicuas",
+      "Crestas transversales",
+      "Tubérculo de Carabelli",
+      "Surcos interradiculares",
+      "Mamelones"
+    ],
+    "answer": 5,
+    "explanation": "Los mamelones son lobulaciones incipientes del esmalte visibles tras la erupción, que se desgastan con la función."
+  },
+  {
+    "q": "La altura de contorno bucal en dientes posteriores suele ubicarse en:",
+    "options": [
+      "Tercio medio",
+      "Tercio incisal",
+      "Tercio oclusal",
+      "En la unión amelocementaria",
+      "Tercio cervical",
+      "No tiene patrón"
+    ],
+    "answer": 4,
+    "explanation": "Bucal en posteriores: tercio cervical; en lingual suele desplazarse al tercio medio por la convexidad lingual."
+  },
+  {
+    "q": "La altura de contorno lingual en molares superiores se localiza habitualmente en:",
+    "options": [
+      "Tercio medio",
+      "Tercio cervical",
+      "Tercio oclusal",
+      "No aplica en superficies linguales",
+      "Tercio incisal",
+      "Unión amelocementaria"
+    ],
+    "answer": 0,
+    "explanation": "Lingual/palatino de posteriores: altura de contorno en el tercio medio por la prominencia del contorno interno."
+  },
+  {
+    "q": "¿Qué embrasura suele ser más amplia en sentido inciso/oclusal en las piezas anteriores?",
+    "options": [
+      "Embrasura bucal",
+      "Embrasura lingual",
+      "Embrasura incisal",
+      "Embrasura cervical",
+      "Embrasura radicular",
+      "Ninguna, todas son iguales"
+    ],
+    "answer": 2,
+    "explanation": "En anteriores, la embrasura incisal suele ser más amplia que la cervical; en posteriores cambia la relación."
+  },
+  {
+    "q": "Un segundo premolar inferior de dos cúspides muestra con mayor frecuencia qué patrón oclusal?",
+    "options": [
+      "H",
+      "Y",
+      "U",
+      "T",
+      "X",
+      "Cruz"
+    ],
+    "answer": 0,
+    "explanation": "Con dos cúspides (una bucal y una lingual), el patrón más reportado es en H (también puede verse U)."
+  },
+  {
+    "q": "¿Cuál afirmación sobre líneas ángulo es correcta?",
+    "options": [
+      "Unen tres superficies y forman un vértice",
+      "Unen dos superficies y forman un borde",
+      "Unen dos cúspides y forman una cresta",
+      "Unen dos fosas y forman un surco",
+      "Son sinónimo de rebordes marginales",
+      "Solo existen en caras radiculares"
+    ],
+    "answer": 1,
+    "explanation": "La línea ángulo es la intersección lineal de dos superficies; el punto ángulo es la unión de tres superficies."
+  },
+  {
+    "q": "En caninos superiores, la corona vista desde incisal muestra generalmente:",
+    "options": [
+      "Contorno circular perfecto",
+      "Contorno romboidal con eje mayor mesio-distal",
+      "Contorno cuadrangular",
+      "Contorno ovoidal con eje mayor vestíbulo-lingual",
+      "Contorno triangular invertido",
+      "Contorno en trébol"
+    ],
+    "answer": 3,
+    "explanation": "El contorno incisal del canino superior tiende a ser ovoidal, con mayor dimensión vestíbulo-lingual."
+  },
+  {
+    "q": "¿Cuál es el contacto proximal más cervical en los incisivos superiores?",
+    "options": [
+      "Mesial del incisivo central superior",
+      "Distal del incisivo central superior",
+      "Mesial del incisivo lateral superior",
+      "Mesial del canino superior",
+      "Distal del incisivo lateral superior",
+      "Distal del canino superior"
+    ],
+    "answer": 4,
+    "explanation": "En el incisivo lateral superior, el contacto distal está más hacia cervical que los otros contactos incisales."
+  },
+  {
+    "q": "El primer premolar superior suele presentar:",
+    "options": [
+      "Una sola raíz",
+      "Tres raíces como un molar",
+      "Raíces fusionadas en todos los casos",
+      "Raíz única muy recta sin surcos",
+      "Raíz palatina bífida",
+      "Dos raíces (bucal y palatina) con frecuencia"
+    ],
+    "answer": 5,
+    "explanation": "Es relativamente común que el 1.º premolar superior esté birradiculado (bucal y palatina)."
+  },
+  {
+    "q": "La cúspide distolingual del primer molar superior:",
+    "options": [
+      "Suele ser la más grande de todas",
+      "No existe nunca",
+      "Se une por cresta oblicua a la mesiobucal",
+      "Determina el patrón en Y",
+      "Es sinónimo de Carabelli",
+      "Puede reducirse o ausentarse en segundos molares"
+    ],
+    "answer": 5,
+    "explanation": "La distopalatina puede ser pequeña o ausente en segundos molares, simplificando el contorno oclusal."
+  },
+  {
+    "q": "El 'surco central' en molares inferiores recorre típicamente:",
+    "options": [
+      "Vestíbulo-lingual",
+      "Mesio-distal",
+      "Oblicuo mesiopalatino–distobucal",
+      "Circunferencial",
+      "En H",
+      "En Y"
+    ],
+    "answer": 1,
+    "explanation": "El surco central principal de molares inferiores es mesiodistal en el plano oclusal."
+  },
+  {
+    "q": "¿Qué característica diferencia al primer molar inferior de cinco cúspides?",
+    "options": [
+      "Tres linguales y dos bucales",
+      "Una lingual y cuatro bucales",
+      "Cinco linguales",
+      "Cinco bucales",
+      "Dos cúspides linguales y tres bucales",
+      "Dos palatinas y tres vestibulares"
+    ],
+    "answer": 4,
+    "explanation": "El patrón típico es 3 bucales (mesiobucal, distobucal, distal) y 2 linguales (mesiolingual, distolingual)."
+  },
+  {
+    "q": "En un canino superior, el brazo distal del vértice cuspidal suele ser:",
+    "options": [
+      "Más corto y recto",
+      "Igual al mesial",
+      "Más corto y cóncavo",
+      "Más largo y convexo",
+      "Muy inciso en forma de V profunda",
+      "Ausente"
+    ],
+    "answer": 3,
+    "explanation": "El brazo distal es más largo y menos anguloso; el mesial es más corto y más recto."
+  },
+  {
+    "q": "La curvatura de la línea cervical (amelocementaria) es mayor en:",
+    "options": [
+      "Caras distales de todos los dientes",
+      "Caras linguales de molares",
+      "Caras mesiales de dientes anteriores",
+      "Caras bucales de premolares",
+      "Caras distales de caninos",
+      "No hay patrón"
+    ],
+    "answer": 2,
+    "explanation": "La mayor curvatura se observa en caras mesiales de dientes anteriores; disminuye hacia distal y hacia posteriores."
+  },
+  {
+    "q": "En incisivos superiores, el cíngulo se desplaza a menudo hacia:",
+    "options": [
+      "Distal",
+      "Mesial",
+      "Bucal",
+      "Incisal",
+      "Apical",
+      "No presenta desplazamiento"
+    ],
+    "answer": 0,
+    "explanation": "El cíngulo de incisivos superiores puede presentar una ligera desviación hacia distal."
+  },
+  {
+    "q": "En los premolares superiores, la cúspide bucal comparada con la palatina suele ser:",
+    "options": [
+      "Más corta y menos voluminosa",
+      "Más alta y ligeramente más voluminosa",
+      "Igual en todas las dimensiones",
+      "Ausente en el primero",
+      "Fusionada con la palatina",
+      "Cóncava en su vértice"
+    ],
+    "answer": 1,
+    "explanation": "La cúspide bucal suele ser más alta/prominente; la palatina es más corta y redondeada."
+  },
+  {
+    "q": "Los rebordes marginales en anteriores se ubican en:",
+    "options": [
+      "Borde incisal",
+      "Cara bucal tercio cervical",
+      "Borde cervical de la corona",
+      "Extremos mesial y distal de la superficie lingual",
+      "Surco central oclusal",
+      "Cresta oblicua"
+    ],
+    "answer": 3,
+    "explanation": "En anteriores, los rebordes marginales enmarcan la fosa lingual en sus límites mesial y distal."
+  },
+  {
+    "q": "La 'fosa lingual' es característica de:",
+    "options": [
+      "Premolares inferiores",
+      "Molares superiores",
+      "Incisivos y caninos",
+      "Todas las piezas",
+      "Solo molares inferiores",
+      "Terceros molares"
+    ],
+    "answer": 2,
+    "explanation": "Anteriores presentan fosa lingual, delimitada por rebordes marginales y el cíngulo."
+  },
+  {
+    "q": "En la cara oclusal de un primer premolar superior, la cresta transversal:",
+    "options": [
+      "Une cúspide mesiopalatina con distobucal",
+      "Une dos rebordes marginales",
+      "Une dos cúspides bucales",
+      "No existe en premolares",
+      "Equivale a cresta oblicua",
+      "Une cúspide bucal con palatina"
+    ],
+    "answer": 5,
+    "explanation": "Una cresta transversal conecta cúspide bucal y palatina a través de sus rebordes triangulares."
+  },
+  {
+    "q": "La cúspide de Carabelli se localiza:",
+    "options": [
+      "En la cara bucal del primer molar superior",
+      "En la cara distal del primer molar inferior",
+      "En el cíngulo de caninos",
+      "En el reborde marginal mesial de premolares",
+      "En la cara palatina de la cúspide mesiopalatina del primer molar superior",
+      "En la cresta oblicua"
+    ],
+    "answer": 4,
+    "explanation": "Es un tubérculo accesorio palatino ubicado en la cúspide mesiopalatina del primer molar superior."
+  },
+  {
+    "q": "El segundo molar superior, respecto al primero, suele mostrar:",
+    "options": [
+      "Cresta oblicua ausente con más frecuencia",
+      "Mayor distolingual",
+      "Más raíces divergentes",
+      "Mayor perímetro oclusal",
+      "Más cúspides accesorias",
+      "Más surcos secundarios"
+    ],
+    "answer": 0,
+    "explanation": "La cresta oblicua puede estar menos definida o ausente; la distolingual puede ser más reducida."
+  },
+  {
+    "q": "¿Cuál opción es correcta sobre el contorno cervical (línea amelocementaria) en molares?",
+    "options": [
+      "Tiene mayor curvatura que en incisivos",
+      "Se curva más en distal que en mesial",
+      "Es prácticamente plana en comparación con anteriores",
+      "Se dirige hacia apical en bucal y hacia incisal en lingual",
+      "Es idéntica en todas las caras",
+      "No existe en molares"
+    ],
+    "answer": 2,
+    "explanation": "La curvatura cervical en molares es menos marcada que en dientes anteriores."
+  },
+  {
+    "q": "En mandibulares, el contacto proximal más oclusal en premolares suele estar en:",
+    "options": [
+      "Mesial",
+      "Distal",
+      "Ambos al mismo nivel",
+      "No hay patrón",
+      "Cervical",
+      "Incisal"
+    ],
+    "answer": 0,
+    "explanation": "En varios premolares inferiores, el contacto mesial está algo más oclusal que el distal."
+  },
+  {
+    "q": "El ‘surco bucal’ de los molares inferiores típicamente:",
+    "options": [
+      "Divide las cúspides linguales",
+      "Divide las cúspides bucales y puede continuar a la cara bucal",
+      "Conecta fosas secundarias exclusivamente",
+      "Es una fisura cervical",
+      "No existe",
+      "Es sinónimo de cresta transversal"
+    ],
+    "answer": 1,
+    "explanation": "El surco bucal separa las cúspides bucales y puede extenderse hacia la superficie bucal."
+  },
+  {
+    "q": "En un incisivo central inferior, el borde incisal visto desde proximal se ubica típicamente:",
+    "options": [
+      "Por vestibular respecto al eje radicular",
+      "Centrado sobre el eje radicular",
+      "Más apical que cervical",
+      "Por lingual respecto al eje radicular",
+      "Muy desplazado a mesial",
+      "Fuera del contorno coronario"
+    ],
+    "answer": 3,
+    "explanation": "En inferiores, el borde incisal puede estar ligeramente lingual al eje de la raíz."
+  },
+  {
+    "q": "La cara lingual de incisivos superiores presenta, además de la fosa, con frecuencia:",
+    "options": [
+      "Cresta oblicua",
+      "Cresta transversal",
+      "Tubérculo de Carabelli",
+      "Surco interradicular",
+      "Rebordes marginales bien definidos y cíngulo",
+      "Cúspide distal accesoria"
+    ],
+    "answer": 4,
+    "explanation": "Los rebordes marginales delimitan la fosa lingual; el cíngulo remata el tercio cervical."
+  },
+  {
+    "q": "En caninos inferiores, comparados con los superiores, la corona suele ser:",
+    "options": [
+      "Más ancha mesiodistalmente",
+      "Idéntica en dimensiones",
+      "Con vértice cuspídeo desplazado a mesial",
+      "Con brazos cuspidales iguales",
+      "Con cara bucal cóncava",
+      "Más estrecha y con cíngulo menos prominente"
+    ],
+    "answer": 5,
+    "explanation": "El canino inferior es más estrecho mesiodistalmente y el cíngulo menos marcado que en el superior."
+  },
+  {
+    "q": "En un primer premolar superior, la raíz presenta a menudo un surco longitudinal en:",
+    "options": [
+      "Cara palatina",
+      "Cara bucal",
+      "Cara distal",
+      "Sólo en caras proximales de la corona",
+      "No presenta surcos",
+      "Cara mesial"
+    ],
+    "answer": 5,
+    "explanation": "Es frecuente un surco longitudinal en la superficie mesial radicular del 1.º premolar superior."
+  },
+  {
+    "q": "En molares superiores, el triángulo de oclusión (Triángulo de Carabelli) se relaciona con:",
+    "options": [
+      "La unión de dos fisuras",
+      "La fosa central, el reborde marginal mesial y la cresta oblicua",
+      "La fosa central, la fosa distal y la fosa mesial",
+      "Dos cúspides linguales y una bucal",
+      "Las tres raíces",
+      "El cíngulo y los rebordes marginales"
+    ],
+    "answer": 1,
+    "explanation": "Se describe una relación entre la fosa central, el reborde marginal mesial y la cresta oblicua en el patrón oclusal."
+  },
+  {
+    "q": "En un segundo molar inferior típico (cuatro cúspides), el patrón oclusal se asemeja a:",
+    "options": [
+      "Rombo perfecto",
+      "Rectángulo con surco transversal",
+      "H",
+      "U",
+      "Cruz (+)",
+      "Y"
+    ],
+    "answer": 4,
+    "explanation": "El segundo molar inferior de cuatro cúspides suele mostrar patrón en cruz formada por surcos bucal y lingual con el central."
+  },
+  {
+    "q": "La cúspide funcional principal en molares inferiores durante la oclusión céntrica es:",
+    "options": [
+      "Lingual",
+      "Palatina",
+      "Mesiolingual",
+      "Bucal",
+      "Distolingual",
+      "Cúspide de Carabelli"
+    ],
+    "answer": 3,
+    "explanation": "En oclusión, las cúspides bucales inferiores y las palatinas superiores actúan como cúspides de soporte (funcionales)."
+  },
+  {
+    "q": "El punto de contacto proximal en anteriores, de mesial a distal, tiende a:",
+    "options": [
+      "Desplazarse hacia incisal",
+      "Mantenerse constante",
+      "Desplazarse hacia cervical",
+      "Desplazarse hacia bucal",
+      "Desplazarse hacia lingual",
+      "Desaparecer"
+    ],
+    "answer": 2,
+    "explanation": "De mesial a distal, el contacto se hace más cervical, especialmente visible del incisivo central al lateral y canino."
+  },
+  {
+    "q": "Una fisura oclusal, respecto a un surco, se caracteriza por:",
+    "options": [
+      "Menor amplitud y mayor profundidad",
+      "Mayor amplitud y menor profundidad",
+      "Igual morfología",
+      "Ser circunscrita",
+      "Estar solo en caras proximales",
+      "Ser exclusiva de anteriores"
+    ],
+    "answer": 0,
+    "explanation": "La fisura es estrecha y profunda; el surco es una depresión lineal más amplia."
+  },
+  {
+    "q": "En el primer molar superior, la raíz palatina comparada con las bucales es:",
+    "options": [
+      "Más corta y recta",
+      "Más larga y robusta",
+      "Siempre fusionada",
+      "Doble",
+      "Menos separada del tronco radicular",
+      "Ausente"
+    ],
+    "answer": 1,
+    "explanation": "La raíz palatina suele ser la más larga y robusta de las tres raíces del primer molar superior."
+  },
+  {
+    "q": "En el segundo premolar inferior de tres cúspides, las dos cúspides linguales se denominan:",
+    "options": [
+      "Mesiopalatina y distopalatina",
+      "Mesiobucal y distobucal",
+      "Mesial y distal",
+      "Mesiolingual y distolingual",
+      "Mesiolingual y mesiobucal",
+      "Distolingual y distobucal"
+    ],
+    "answer": 3,
+    "explanation": "Dos cúspides linguales: mesiolingual y distolingual, más una cúspide bucal."
+  },
+  {
+    "q": "Respecto a la fosa central de molares superiores, señale lo correcto:",
+    "options": [
+      "Se ubica siempre en la cara lingual",
+      "No existe si hay cresta oblicua",
+      "Es la depresión circunscrita principal en la oclusal",
+      "Se ubica en el borde incisal",
+      "Está limitada por cíngulo",
+      "Se conecta con surcos interradiculares"
+    ],
+    "answer": 2,
+    "explanation": "La fosa central es la depresión mayor y central en la superficie oclusal de molares."
+  },
+  {
+    "q": "En incisivos inferiores, el borde incisal visto desde frontal suele:",
+    "options": [
+      "Estar horizontal y simétrico",
+      "Inclinarse ligeramente hacia mesial",
+      "Ser muy convexo hacia bucal",
+      "Ser muy cóncavo",
+      "No presentar inclinaciones",
+      "Inclinarse ligeramente hacia distal"
+    ],
+    "answer": 5,
+    "explanation": "Puede observarse una ligera inclinación distal del borde incisal en inferiores por la morfología y desgaste funcional."
+  },
+  {
+    "q": "La unión de dos rebordes triangulares opuestos (bucal y lingual) en premolares forma:",
+    "options": [
+      "Cresta oblicua",
+      "Reborde marginal",
+      "Borde incisal",
+      "Cíngulo",
+      "Cresta transversal",
+      "Fosa triangular"
+    ],
+    "answer": 4,
+    "explanation": "Cresta transversal: unión de reborde triangular bucal y lingual enfrentados."
+  },
+  {
+    "q": "¿Qué pieza muestra más frecuentemente cinco cúspides en maxilar?",
+    "options": [
+      "Primer molar superior con Carabelli prominente",
+      "Segundo molar superior con cúspide distolingual duplicada",
+      "Primer molar inferior",
+      "Segundo molar inferior",
+      "Canino superior",
+      "Segundo premolar superior"
+    ],
+    "answer": 0,
+    "explanation": "Cuando el tubérculo de Carabelli es prominente puede considerarse una cúspide accesoria evidente, sumando cinco relieves."
+  },
+  {
+    "q": "El contacto proximal en caninos superiores, comparando mesial y distal, suele ser:",
+    "options": [
+      "Mesial más cervical que distal",
+      "Ambos en el mismo nivel",
+      "Distal más cervical que mesial",
+      "Mesial ausente",
+      "Distal ausente",
+      "Ambos muy incisales"
+    ],
+    "answer": 2,
+    "explanation": "En caninos superiores, el contacto distal se localiza más hacia cervical que el mesial."
+  },
+  {
+    "q": "El contorno oclusal del segundo molar superior tiende a ser:",
+    "options": [
+      "Más cuadrangular/romboide simplificado por reducción distolingual",
+      "Más romboide que el primero",
+      "Circular perfecto",
+      "Triangular",
+      "Hexagonal regular",
+      "En cruz"
+    ],
+    "answer": 0,
+    "explanation": "Suele simplificarse hacia una forma más cuadrangular/romboide por reducción o ausencia de la cúspide distolingual."
+  },
+  {
+    "q": "En un primer premolar superior, el surco de desarrollo mesial puede:",
+    "options": [
+      "Ser exclusivamente lingual",
+      "Cruzar el reborde marginal y prolongarse a la cara mesial",
+      "Unir dos fosas distales",
+      "Formar una cresta oblicua",
+      "Ser una fisura cervical",
+      "No existir nunca"
+    ],
+    "answer": 1,
+    "explanation": "Clásicamente se describe un surco de desarrollo que cruza el reborde marginal mesial y continúa sobre la cara mesial."
+  },
+  {
+    "q": "¿Cuál enunciado sobre los rebordes marginales en molares es correcto?",
+    "options": [
+      "Se ubican en caras libres",
+      "Forman el cíngulo",
+      "Son equivalentes a líneas ángulo",
+      "Están en caras proximales y delimitan las fosas mesial y distal",
+      "Son parte del cuello anatómico",
+      "Solo existen en anteriores"
+    ],
+    "answer": 3,
+    "explanation": "En molares, los rebordes marginales mesial y distal cierran la superficie oclusal y delimitan fosas marginales."
+  },
+  {
+    "q": "En el primer molar inferior, la cúspide distal se localiza:",
+    "options": [
+      "En el lado lingual",
+      "Entre las dos cúspides linguales",
+      "En la cresta oblicua",
+      "En el cíngulo",
+      "En el lado bucal, distal a la distobucal",
+      "No existe nunca"
+    ],
+    "answer": 4,
+    "explanation": "El primer molar inferior de cinco cúspides posee una cúspide distal pequeña en el lado bucal."
+  },
+  {
+    "q": "Los periquematíes (líneas de imbricación) en incisivos se observan mejor en:",
+    "options": [
+      "Superficie lingual, tercio incisal",
+      "Superficie oclusal",
+      "Superficie distal radicular",
+      "Superficie bucal, tercio incisal",
+      "Superficie palatina, tercio cervical",
+      "Superficie bucal, tercio cervical"
+    ],
+    "answer": 5,
+    "explanation": "Se aprecian como líneas finas en la superficie bucal del tercio cervical, más marcadas en anteriores y disminuyendo hacia posterior."
+  },
+  {
+    "q": "El punto ángulo en anatomía dental es:",
+    "options": [
+      "Intersección de dos superficies",
+      "Punto medio del reborde marginal",
+      "El vértice de la cúspide",
+      "El centro de la fosa",
+      "La unión entre esmalte y dentina",
+      "Intersección de tres superficies"
+    ],
+    "answer": 5,
+    "explanation": "Punto ángulo: intersección de tres superficies coronarias; línea ángulo: de dos superficies."
+  },
+  {
+    "q": "En la cara palatina de incisivos superiores, los surcos de desarrollo pueden:",
+    "options": [
+      "Formar una fosa cingulovestibular",
+      "Delimitar el cíngulo y contribuir a la fosa lingual",
+      "Originar crestas oblicuas",
+      "Dividir la raíz en dos",
+      "Ser equivalentes a periquematíes",
+      "Generar el surco interradicular"
+    ],
+    "answer": 1,
+    "explanation": "Surcos de desarrollo linguales pueden delimitar el cíngulo y bordear la fosa lingual en anteriores."
+  },
+  {
+    "q": "En un segundo molar inferior, comparado con el primero, es más frecuente encontrar:",
+    "options": [
+      "Cinco cúspides",
+      "Cresta oblicua",
+      "Cúspide de Carabelli",
+      "Raíces más divergentes",
+      "Cuatro cúspides y patrón en cruz",
+      "Una raíz única"
+    ],
+    "answer": 4,
+    "explanation": "El segundo molar inferior suele tener cuatro cúspides con patrón en cruz; el primero a menudo tiene cinco cúspides."
+  },
+  {
+    "q": "La 'fosa distal' en molares superiores se localiza:",
+    "options": [
+      "En el centro exacto de la oclusal",
+      "Entre las cúspides bucales",
+      "En la cara palatina cervical",
+      "Entre reborde marginal distal y cresta oblicua",
+      "En el cíngulo",
+      "No existe"
+    ],
+    "answer": 3,
+    "explanation": "Pequeña depresión entre el reborde marginal distal y el extremo distal de la cresta oblicua."
+  },
+  {
+    "q": "La típica divergencia radicular de molares superiores es:",
+    "options": [
+      "MB hacia lingual y DB hacia mesial",
+      "Todas paralelas",
+      "Raíz palatina hacia palatino, MB y DB hacia bucal",
+      "Fusionadas siempre",
+      "Dos palatinas y una bucal",
+      "Una única raíz cónica"
+    ],
+    "answer": 2,
+    "explanation": "Tres raíces divergentes: una palatina robusta y dos bucales (mesiobucal y distobucal)."
+  },
+  {
+    "q": "En el segundo premolar superior, la diferencia de altura entre cúspide bucal y palatina respecto al primero suele ser:",
+    "options": [
+      "Menor (más equilibrada)",
+      "Mayor (más desbalanceada)",
+      "Idéntica",
+      "La bucal es más corta que la palatina",
+      "No hay cúspide palatina",
+      "No hay cúspide bucal"
+    ],
+    "answer": 0,
+    "explanation": "El 2.º premolar superior suele tener cúspides de altura más similar que el 1.º, que muestra mayor dominancia bucal."
+  },
+  {
+    "q": "En anatomía de anteriores, el cíngulo prominente puede generar:",
+    "options": [
+      "Mayor concavidad cervical lingual",
+      "Mayor convexidad cervical lingual",
+      "Cresta transversal",
+      "Cresta oblicua",
+      "Surco interradicular",
+      "Fosa central oclusal"
+    ],
+    "answer": 1,
+    "explanation": "El cíngulo es una convexidad cervical en la superficie lingual que puede ser más o menos prominente."
+  },
+  {
+    "q": "La transición de rebordes triangulares hacia la fosa central define:",
+    "options": [
+      "La altura radicular",
+      "La presencia del cíngulo",
+      "El número de raíces",
+      "La inclinación cuspídea y la trayectoría de desgaste",
+      "La forma del cuello anatómico",
+      "El patrón de periquematíes"
+    ],
+    "answer": 3,
+    "explanation": "La inclinación de los rebordes triangulares orienta la dinámica de contactos y desgastes oclusales."
+  },
+  {
+    "q": "En un incisivo lateral superior, la convexidad distal del borde incisal y el contacto distal:",
+    "options": [
+      "Están más incisales que los mesiales",
+      "Son idénticos a los mesiales",
+      "Están más cervicales que los mesiales",
+      "No existen",
+      "Se ubican palatinos",
+      "Se ubican vestibulares"
+    ],
+    "answer": 2,
+    "explanation": "Distal más cervical que mesial en anteriores superiores, patrón clásico de contactos e inclinación incisal."
+  },
+  {
+    "q": "Durante la masticación, ¿qué cúspides de los molares superiores son de soporte principal?",
+    "options": [
+      "Bucales",
+      "Mesiobucales",
+      "Distobucales",
+      "Mesiolinguales",
+      "Distolinguales",
+      "Palatinas"
+    ],
+    "answer": 5,
+    "explanation": "Cúspides palatinas superiores (y bucales inferiores) son de soporte en oclusión céntrica."
+  },
+  {
+    "q": "El canal radicular como depresión lineal en raíces se observa con frecuencia en:",
+    "options": [
+      "Caras bucales de molares superiores",
+      "Cervical de caninos superiores",
+      "Oclusal de premolares",
+      "Cresta oblicua",
+      "Caras proximales de incisivos inferiores",
+      "Cíngulo"
+    ],
+    "answer": 4,
+    "explanation": "Depresiones longitudinales (canales radiculares) son frecuentes en caras proximales de incisivos inferiores y caninos."
+  },
+  {
+    "q": "El reborde marginal mesial de un primer molar superior respecto al distal suele estar:",
+    "options": [
+      "Más oclusal",
+      "Más cervical",
+      "Al mismo nivel",
+      "Ausente",
+      "Muy separado de la fosa central",
+      "Fusionado con la cresta oblicua"
+    ],
+    "answer": 0,
+    "explanation": "En muchos molares, el reborde marginal mesial está ligeramente más oclusal que el distal."
+  },
+  {
+    "q": "En premolares inferiores, la cúspide lingual comparada con la bucal tiende a ser:",
+    "options": [
+      "Más alta y más voluminosa",
+      "Igual",
+      "Más baja y más pequeña",
+      "Ausente siempre",
+      "Más aguda",
+      "Múltiple"
+    ],
+    "answer": 2,
+    "explanation": "En premolares inferiores, la cúspide lingual suele ser más baja/pequeña que la bucal (salvo la variante de 3 cúspides del 2.º)."
+  },
+  {
+    "q": "La 'foseta triangular' se ubica en molares típicamente:",
+    "options": [
+      "Junto a los rebordes marginales mesial y distal",
+      "En el centro de la fosa central",
+      "En la cara lingual cervical",
+      "En la cara bucal cervical",
+      "En la unión esmalte-dentina",
+      "En la cresta oblicua"
+    ],
+    "answer": 0,
+    "explanation": "Pequeñas depresiones junto a los rebordes marginales, denominadas fosetas triangulares."
+  },
+  {
+    "q": "En un primer molar superior, la cúspide mesiobucal vs distobucal es usualmente:",
+    "options": [
+      "Distobucal más grande que mesiobucal",
+      "Mesiobucal más grande que distobucal",
+      "Iguales",
+      "Ambas ausentes",
+      "Mesiobucal siempre más corta",
+      "Distobucal siempre más larga"
+    ],
+    "answer": 1,
+    "explanation": "La mesiobucal suele ser más voluminosa que la distobucal; la mayor sigue siendo la mesiopalatina."
+  },
+  {
+    "q": "El 'surco palatino' en molares superiores separa típicamente:",
+    "options": [
+      "Las cúspides bucales",
+      "Las cúspides palatinas de las bucales",
+      "La fosa central de la distal",
+      "La mesiopalatina de la distopalatina",
+      "La cresta oblicua de la transversal",
+      "Los rebordes marginales"
+    ],
+    "answer": 3,
+    "explanation": "El surco palatino discurre entre las cúspides palatinas (mesiopalatina y distopalatina) cuando esta última está presente."
+  },
+  {
+    "q": "Los 'mamelones' se asocian principalmente con:",
+    "options": [
+      "Oclusal de premolares",
+      "Lingual de caninos",
+      "Cervical de molares",
+      "Cresta oblicua",
+      "Borde incisal de incisivos recién erupcionados",
+      "Fosas triangulares"
+    ],
+    "answer": 4,
+    "explanation": "Son lobulaciones transitorias del borde incisal de incisivos jóvenes."
+  }
+];
+let originalQuestions = JSON.parse(JSON.stringify(questions));
+let current = 0;
+let answers = new Array(questions.length).fill(null);
+
+/* ============== Persistencia ============== */
+(function restoreState(){
+  try {
+    const saved = JSON.parse(localStorage.getItem("quizParabolicoState"));
+    if(saved && saved.questionsHash === hashQuestions(questions)) {
+      current = saved.current;
+      answers = saved.answers;
+    }
+  } catch(e) {}
+})();
+function hashQuestions(qs){ return btoa(unescape(encodeURIComponent(qs.map(q=>q.q).join("|")))).slice(0,24); }
+function persistState(){
+  localStorage.setItem("quizParabolicoState", JSON.stringify({
+    current, answers, questionsHash: hashQuestions(questions)
+  }));
+}
+
+/* ============== Render inicial ============== */
+renderQuestion(); updateNavState();
+
+/* ============== Render Pregunta ============== */
+function renderQuestion(){
+  const q = questions[current];
+  const answered = answers[current] !== null;
+  document.getElementById("progress-bar").style.width = `${(current+1)/questions.length*100}%`;
+  document.getElementById("quiz").innerHTML = `
+    <div class="question" id="questionText">${current+1}. ${q.q}</div>
+    <div class="options ${answered?'answered':''}" role="radiogroup" aria-labelledby="questionText">
+      ${q.options.map((opt,i)=>`
+        <label class="option-card ${answers[current]===i?'selected':''}" tabindex="0">
+          <span class="option-indicator" aria-hidden="true"></span>
+          <input type="radio" name="opt" value="${i}" ${answers[current]===i?'checked':''}
+              aria-checked="${answers[current]===i?'true':'false'}" aria-label="${opt}">
+          <span>${opt}</span>
+        </label>
+      `).join("")}
+    </div>`;
+  document.querySelectorAll('.option-card').forEach(card=>{
+    card.addEventListener('click',()=>selectCard(card));
+    card.addEventListener('keypress',e=>{
+      if(e.key===" "||e.key==="Enter"){e.preventDefault();selectCard(card);}
+    });
+  });
+}
+function selectCard(card){
+  document.querySelectorAll('.option-card').forEach(c=>{
+    c.classList.remove('selected');
+    const inp = c.querySelector('input'); if(inp) inp.setAttribute('aria-checked','false');
+  });
+  card.classList.add('selected');
+  const input = card.querySelector('input');
+  input.checked = true; input.setAttribute('aria-checked','true');
+  card.closest('.options').classList.add('answered');
+  saveAnswer();
+}
+function saveAnswer(){
+  const sel = document.querySelector('input[name="opt"]:checked');
+  if(sel){ answers[current] = parseInt(sel.value,10); persistState(); }
+  updateNavState();
+}
+
+/* ============== Navegación ============== */
+function nextQuestion(){ if(current<questions.length-1){ current++; renderQuestion(); updateNavState(); persistState(); } }
+function prevQuestion(){ if(current>0){ current--; renderQuestion(); updateNavState(); persistState(); } }
+function updateNavState(){
+  document.getElementById('prevBtn').disabled = current===0;
+  document.getElementById('nextBtn').disabled = current===questions.length-1;
+  document.getElementById('finishBtn').disabled = answers.includes(null);
+}
+function finishQuiz(){ if(answers.includes(null)){alert("Responde todas las preguntas antes de finalizar.");return;} showResult(); }
+
+/* ============== Reiniciar / Reorganizar ============== */
+function restartQuiz(){
+  if(!confirm("¿Reiniciar el cuestionario?")) return;
+  answers = new Array(questions.length).fill(null);
+  current = 0;
+  document.getElementById('result').innerHTML = "";
+  document.getElementById('feedback').innerHTML = "";
+  document.getElementById('medalContainer').innerHTML = "";
+  renderQuestion(); updateNavState(); persistState();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function shuffleQuestions(){
+  if(!confirm("¿Reorganizar aleatoriamente las preguntas? Reiniciará el intento.")) return;
+  questions = questions.map(v=>({v,sort:Math.random()})).sort((a,b)=>a.sort-b.sort).map(o=>o.v);
+  originalQuestions = JSON.parse(JSON.stringify(questions));
+  restartQuiz();
+}
+
+/* ============== Calificación (Letra estándar) ============== */
+function gradeLetter(percent){
+  if(percent >= 90) return 'A';
+  if(percent >= 80) return 'B';
+  if(percent >= 70) return 'C';
+  if(percent >= 60) return 'D';
+  return 'F';
+}
+
+/* ============== Resultado ============== */
+function showResult(){
+  let score=0;
+  const details = questions.map((q,i)=>{
+    const correct = q.answer===answers[i];
+    if(correct) score++;
+    return `<div class="feedback-item ${correct?'correct':'incorrect'}">
+      <strong>${i+1}. ${q.q}</strong><br>
+      Tu respuesta: ${answers[i]!==null?q.options[answers[i]]:'<em>No respondida</em>'}<br>
+      Correcta: <span style="color:var(${correct?'--color-correct':'--color-brand'});font-weight:600">${q.options[q.answer]}</span>
+      <em>${q.explanation}</em>
+    </div>`;
+  }).join('');
+  const percent = (score/questions.length)*100;
+  const letter = gradeLetter(percent);
+
+  // Medalla según letra
+  let medalClass="", medalText="";
+  if(letter==='A'){ medalText="¡Medalla de Oro! Dominio excelente."; }
+  else if(letter==='B'){ medalClass="plata"; medalText="Medalla de Plata: Muy buen desempeño."; }
+  else if(letter==='C'){ medalClass="bronce"; medalText="Medalla de Bronce: Buen avance, sigue practicando."; }
+  else if(letter==='D'){ medalText="Refuerza conceptos clave y vuelve a intentarlo. ¡Puedes mejorar!"; }
+  else { medalText="Necesitas repasar la teoría y practicar más. ¡Ánimo, cada intento suma!"; }
+
+  const gradeBadge = `<span class="grade-badge grade-${letter}">${letter}</span>`;
+  document.getElementById("result").innerHTML =
+    `Puntaje final: <strong>${score}/${questions.length}</strong> — ${percent.toFixed(1)}% — ${gradeBadge}`;
+
+  if(letter==='A'||letter==='B'||letter==='C'){
+    document.getElementById("medalContainer").innerHTML =
+      `<div class="medal ${medalClass}">${medalText}</div>`;
+  } else {
+    document.getElementById("medalContainer").innerHTML =
+      `<div style="margin:.9rem auto 0;max-width:480px;font-size:.85rem;line-height:1.35;text-align:center;color:var(--color-text-dim);">${medalText}</div>`;
+  }
+
+  document.getElementById("feedback").innerHTML =
+    `<div class="toggle-feedback" onclick="toggleFeedback()">Ver desglose detallado</div>
+     <div class="feedback-container" id="feedbackContainer" aria-hidden="true">${details}</div>`;
+  window.scrollTo({top:document.getElementById("result").offsetTop - 40, behavior:'smooth'});
+}
+function toggleFeedback(){
+  const fc = document.getElementById('feedbackContainer');
+  if(!fc) return;
+  const o = fc.style.display==='block';
+  fc.style.display = o?'none':'block';
+  fc.setAttribute("aria-hidden", o?"true":"false");
+  document.querySelector('.toggle-feedback').textContent = o?'Ver desglose detallado':'Ocultar desglose';
+}
+
+/* ============== Temas ============== */
+function changeTheme(theme){ document.documentElement.className=theme; document.body.className=theme; }
+function onThemeSelect(val){
+  if(val==='auto'){ localStorage.setItem("quizParabolicoThemeMode","auto"); applyAutoTheme(); }
+  else {
+    localStorage.setItem("quizParabolicoThemeMode","manual");
+    localStorage.setItem("quizParabolicoTheme",val);
+    changeTheme(val);
+  }
+}
+function resetTheme(){
+  localStorage.removeItem("quizParabolicoThemeMode");
+  localStorage.removeItem("quizParabolicoTheme");
+  document.getElementById('themeSelect').value='theme-aurora';
+  changeTheme('theme-aurora');
+}
+function applyAutoTheme(){
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  changeTheme(prefersDark?'theme-aurora':'theme-solar');
+}
+(function restoreTheme(){
+  const mode = localStorage.getItem("quizParabolicoThemeMode");
+  if(mode==='auto'){ document.getElementById('themeSelect').value='auto'; applyAutoTheme(); }
+  else {
+    const saved = localStorage.getItem("quizParabolicoTheme")||'theme-aurora';
+    document.getElementById('themeSelect').value=saved; changeTheme(saved);
+  }
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener('change',e=>{
+    if(localStorage.getItem("quizParabolicoThemeMode")==='auto') applyAutoTheme();
+  });
+})();
+
+/* ============== Atajos teclado ============== */
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==="INPUT"||e.target.tagName==="SELECT"||e.target.isContentEditable) return;
+  if(e.key==="ArrowRight") nextQuestion();
+  if(e.key==="ArrowLeft") prevQuestion();
+});
+</script>
+</body>
+</html>
